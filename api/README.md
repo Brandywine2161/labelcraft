@@ -13,4 +13,4 @@ rake test
 
 To view the data currently in the database:
 
-psql -h 52.4.69.219 -p 5432 -U postgres ads_production
+psql -h xx.xx.xx.xx -p 5432 -U postgres ads_production
