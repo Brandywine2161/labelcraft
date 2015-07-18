@@ -1,3 +1,3 @@
 # labelcraft / gridiron
 
-![Team](/blob/master/teamresources/gridiron.png)
+![Team](https://github.com/GridIron/labelcraft/blob/master/teamresources/gridiron.png)
