@@ -28,4 +28,8 @@ Once all containers are running, you can put localhost:3000 in the browser to se
 * `docker run -p 3000:3000 --link pgdb:db -e "RAILS_ENV=docker" -d api`<br>
 
 Once all containers are running, you can put localhost:3000 in the browser to see the website.
+
 #testupdate
+#testy test
+#okay i'm actually changing this
+
