@@ -29,5 +29,15 @@ Once all containers are running, you can put localhost:3000 in the browser to se
 
 Once all containers are running, you can put localhost:3000 in the browser to see the website.
 
+#####Production Ready Concerns -- 
 
-Test 12:45
+Things to consider in a production environment 
+
+- Scaling: elastically growing and shrinking the computing resources required by the amount of requests coming in
+- Logging: take into account how logs are being stored, evaluated and acted on.
+- Backups: making sure you have something to roll back to when the chaos monkeys grow too strong
+- Monitoring: Logs, won't give you everything -- what else do you need real time information on
+- Security: TLS, Certs, firewalls, DoS, XSS, and more... 
+
+Its a lot to take in, good thing we don't need to start from scratch, check [this out](http://shipyard-project.com/)...
+
