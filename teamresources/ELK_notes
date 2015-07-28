@@ -1,0 +1,30 @@
+ELK_notes
+
+Installation
+	Elasticsearch
+		Requires JDK 6 or later
+		Currently testing "Sense" plugin for Chrome as a GUI
+		Program freezing on ./elasticsearch -f
+		Run via ./elasticsearch -d instead
+		PUT
+			creating data
+		POST
+			for searching
+			can use "query" command
+			e.g.:
+			POST /_search
+				{
+    				"query": {
+        				"query_string": {
+            				"query": "ford",
+            				"fields": ["director"]
+        				}
+    				}
+				}
+			Can also filter these query results using "filter"
+		Was having issues trying to get a GUI running because of the "localhost" issue
+			Potentially resolved by Will's suggestion of specifying the ec2's IP or by using 0.0.0.0:9200 (default port is 9200 for http)
+		Try private IP address in place of localhost
+	Logstash
+		Enabled some local testing which pushed logged lines as JSON objects to my locally running version of elasticsearch
+		Have not begun testing on EC2 servers yet
