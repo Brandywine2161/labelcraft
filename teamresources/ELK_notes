@@ -1,7 +1,14 @@
 ELK_notes
 
+Test server: 52.4.158.234
+
+
 Installation
+
+
+
 	Elasticsearch
+		wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.7.1.zip
 		Requires JDK 6 or later
 		Currently testing "Sense" plugin for Chrome as a GUI
 		Program freezing on ./elasticsearch -f
@@ -28,3 +35,131 @@ Installation
 	Logstash
 		Enabled some local testing which pushed logged lines as JSON objects to my locally running version of elasticsearch
 		Have not begun testing on EC2 servers yet
+
+	Kibana
+		To run kibana4 as a service, must run this command to install necessary lib 
+			sudo yum install /lib/lsb/init-functions
+			sudo yum install redhat-lsb-4.0
+
+
+
+
+
+Commands
+
+sudo su
+
+yum update -y
+
+cd /root
+
+wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.7.1.noarch.rpm
+
+yum install elasticsearch-1.7.1.noarch.rpm -y
+
+rm -f elasticsearch-1.7.1.noarch.rpm
+
+cd /usr/share/elasticsearch/
+
+./bin/plugin -install mobz/elasticsearch-head
+
+./bin/plugin -install lukas-vlcek/bigdesk
+
+./bin/plugin install elasticsearch/elasticsearch-cloud-aws/2.4.1
+
+cd /etc/elasticsearch
+
+nano elasticsearch.yml
+
+Config
+
+cluster.name: awstutorialseries
+
+cloud.aws.access_key: ACCESS_KEY_HERE
+
+cloud.aws.secret_key: SECRET_KEY_HERE
+
+cloud.aws.region: us-east-1
+
+discovery.type: ec2
+
+discovery.ec2.tag.Name: "AWS Tutorial Series - Elasticsearch"
+
+http.cors.enabled: true
+
+http.cors.allow-origin: "*"
+
+Commands
+
+service elasticsearch start
+
+Logstash 1.4.2
+Commands
+
+sudo su
+
+yum update -y
+
+cd /root
+
+wget https://download.elasticsearch.org/logstash/logstash/packages/centos/logstash-1.4.2-1_2c0f5a1.noarch.rpm
+
+yum install logstash-1.4.2-1_2c0f5a1.noarch.rpm -y
+
+rm -f logstash-1.4.2-1_2c0f5a1.noarch.rpm
+
+nano /etc/logstash/conf.d/logstash.conf
+
+Config
+
+input { file { path => "/tmp/logstash.txt" } } output { elasticsearch { host => "ELASTICSEARCH_URL_HERE" protocol => "http" } }
+
+Commands
+
+service logstash start
+
+Kibana 4.0.1
+Commands
+
+sudo su
+
+yum update -y
+
+cd /root
+
+wget https://download.elasticsearch.org/kibana/kibana/kibana-4.0.1-linux-x64.tar.gz
+
+tar xzf kibana-4.0.1-linux-x64.tar.gz
+
+rm -f kibana-4.0.1-linux-x64.tar.gz
+
+cd kibana-4.0.1-linux-x64
+
+nano config/kibana.yml
+
+Config
+
+elasticsearch_url: "ELASTICSEARCH_URL_HERE"
+
+Commands
+
+nohup ./bin/kibana &
+
+Navigate In Browser
+
+http://KIBANA_URL:5601/
+
+
+
+LOGS:
+
+[2015-07-30 19:20:13,242][WARN ][bootstrap                ] Unable to lock JVM memory (ENOMEM). This can result in part of the JVM being swapped out. Increase RLIMIT_MEMLOCK (ulimit).
+[2015-07-30 19:20:13,298][INFO ][node                     ] [Battleaxe] version[1.7.1], pid[7334], build[b88f43f/2015-07-29T09:54:16Z]
+[2015-07-30 19:20:13,298][INFO ][node                     ] [Battleaxe] initializing ...
+[2015-07-30 19:20:13,388][INFO ][plugins                  ] [Battleaxe] loaded [cloud-aws], sites [head, bigdesk]
+[2015-07-30 19:20:13,426][INFO ][env                      ] [Battleaxe] using [1] data paths, mounts [[/ (rootfs)]], net usable_space [23gb], net total_space [24.4gb], types [rootfs]
+[2015-07-30 19:20:15,956][ERROR][bootstrap                ] Exception
+org.elasticsearch.common.inject.CreationException: Guice creation errors:
+
+1) Error injecting constructor, java.lang.NoSuchMethodError: org.elasticsearch.discovery.zen.ZenDiscovery.<init>(Lorg/elasticsearch/common/settings/Settings;Lorg/elasticsearch/cluster/ClusterName;Lorg/elasticsearch/threadpool/ThreadPool;Lorg/elasticsearch/transport/TransportService;Lorg/elasticsearch/cluster/ClusterService;Lorg/elasticsearch/node/settings/NodeSettingsService;Lorg/elasticsearch/cluster/node/DiscoveryNodeService;Lorg/elasticsearch/discovery/zen/ping/ZenPingService;Lorg/elasticsearch/discovery/zen/elect/ElectMasterService;Lorg/elasticsearch/discovery/DiscoverySettings;)V
+
