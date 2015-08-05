@@ -57,7 +57,7 @@ angular.module('gapFront')
           $scope.leaderAdded = true;
         });
       }, function(error) {
-        $scope.leaderAlerts.push.apply($scope.leaderAlerts, 'what');
+       // $scope.leaderAlerts.push.apply($scope.leaderAlerts, error.data.messages);
       });
     };
 
