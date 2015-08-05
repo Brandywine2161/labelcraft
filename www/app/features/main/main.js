@@ -65,7 +65,7 @@ angular.module('gapFront')
     $scope.searchDrug = function (drug) {
       var drugToSearch = drug.drug || drug;
       //console.log(drugToSearch);
-      APIService.getDrugLabel(drugToSearch).then(function (resp) {
+      APIService.getDrugLabel('Advil').then(function (resp) {
         processLabelResults(resp);
         $scope.setSelectedDrug($scope.drugs[0]);
       }, serviceError)
