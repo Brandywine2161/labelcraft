@@ -10,7 +10,7 @@
 angular.module('gapFront')
   .service('APIService', function (Restangular, $location) {
     var FDAService = Restangular.withConfig(function(RestangularConfigurer) {
-      RestangularConfigurer.setBaseUrl('https://www.fda.gov');
+      RestangularConfigurer.setBaseUrl('https://api.fda.gov');
     });
 
     var railsService = Restangular.withConfig(function(RestangularConfigurer) {
