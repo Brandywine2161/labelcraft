@@ -94,9 +94,9 @@ Make sure to leave it as localhost (this way it can be contacted by publicip:920
 
 cluster.name: voit_elastic
 
-cloud.aws.access_key: AKIAIAAZ2CKVZJ565PAQ
+cloud.aws.access_key: YOUR_ACCESS_KEY
 
-cloud.aws.secret_key: vCvBoo9+8Gk5X4ZlUQak/I1dxGkaihKvXOtGgNo9
+cloud.aws.secret_key: YOUR_SECRET_KEY
 
 cloud.aws.region: us-east-1
 
