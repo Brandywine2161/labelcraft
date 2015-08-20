@@ -5,7 +5,8 @@ RUN mkdir /usr/src/app && mkdir /usr/src/app/client
 WORKDIR /usr/src/app/client
 
 
-RUN apt-get update && apt-get install -y git npm nodejs && apt-get install -y build-essential chrpath git-core libssl-dev libfontconfig1-dev
+RUN apt-get update && apt-get install -y git npm nodejs
+RUN apt-get install -y build-essential chrpath git-core libssl-dev libfontconfig1-dev
 
 RUN npm install -g bower
 			#grunt-cli /
