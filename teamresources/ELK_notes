@@ -13,6 +13,7 @@ Installation
 	Elasticsearch
 		wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.7.1.zip
 		unzip
+			Did nothing different, now works as service.
 		Requires JDK 6 or later (1.7 is installed by default on AWS EC2 Machines)
 		Currently testing "Sense" plugin for Chrome as a GUI
 		Program freezing on ./elasticsearch -f
@@ -94,9 +95,9 @@ Make sure to leave it as localhost (this way it can be contacted by publicip:920
 
 cluster.name: voit_elastic
 
-cloud.aws.access_key: YOUR_ACCESS_KEY
+cloud.aws.access_key: YOUR_AWS_ACCESS_KEY_HERE
 
-cloud.aws.secret_key: YOUR_SECRET_KEY
+cloud.aws.secret_key: YOUR_AWS_SECRET_KEY_HERE
 
 cloud.aws.region: us-east-1
 
@@ -113,12 +114,6 @@ Commands
 service elasticsearch start (currently running as daemon but looking into installing/running as service)
 	Issues here I believe are associated with Java not being properly linked to the service (No $JAVA_HOME variable set?)
 
-
-
-
-
-
-
 Logstash 1.4.2
 Commands
 
@@ -132,7 +127,7 @@ NOTE: To install most current version, simply go to https://www.elastic.co/downl
 
 wget https://download.elastic.co/logstash/logstash/packages/centos/logstash-1.5.3-1.noarch.rpm
 
-yum install logstash-1.5.3-1.noarch.rpm
+yum install logstash-1.5.3-1.noarch.rpm -y
 
 rm -f logstash-1.5.3-1.noarch.rpm
 
