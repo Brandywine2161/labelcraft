@@ -1,4 +1,4 @@
-# this is another test
+# this is A test
 docker build -t frontend ../www
 sleep 2
 docker run --name frontend -p 80:9000 -d frontend
