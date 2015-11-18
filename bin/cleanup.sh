@@ -3,7 +3,7 @@
 #docker rm `docker ps --no-trunc -aq`
 
 docker stop frontend
-docker rm frontend
+docker rm `docker ps --no-trunc -aq`
 #docker rm -f api
 #docker rm -f pgdb
 
