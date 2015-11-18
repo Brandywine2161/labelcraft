@@ -2,7 +2,8 @@
 #for i in  `docker ps -q`; do docker stop $i; done
 #docker rm `docker ps --no-trunc -aq`
 
-docker rm -f frontend
+docker stop frontend
+docker rm frontend
 #docker rm -f api
 #docker rm -f pgdb
 
