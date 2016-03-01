@@ -6,10 +6,14 @@
 
 Building this project is made easy with Docker, the following instruction sets will get you up and running in no time. 
 
-####Install Docker
-Go to https://docs.docker.com/ and install docker on your computer.
+###Prerequisites
+Install [Docker](https://docs.docker.com/) and [Docker Compose](https://docs.docker.com/compose/) on your computer.
 
-####Run Build Script for entire prototype
+###Build options:
+####(1) Build and run Labelcraft with Docker Compose
+
+
+####(2) Run Build Script for entire prototype
 * Ensure Docker is running successfully on your machine (`Docker ps` should not return an error)
 * Clone the repository
 * cd into the `bin` folder
