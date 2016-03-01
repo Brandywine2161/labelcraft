@@ -34,7 +34,7 @@ sudo bash build.sh
 
 * In your browser, type in http://localhost and you will be able to see front end content.
 
-####(3)Run Docker Container Services Manually
+####(3) Run Docker Container Services Manually
 
 ```shell
 git clone https://github.com/Brandywine2161/labelcraft.git
