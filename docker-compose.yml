@@ -1,0 +1,21 @@
+frontend:
+  container_name: frontend
+  build: www
+  ports:
+   - "80:9000"
+
+db:
+  container_name: pgdb
+  build: api/database/postgres
+  ports:
+   - "5432:5432"
+
+api:
+  container_name: api
+  build: api
+  ports:
+   - "3000:3000"
+  links:
+   - pgdb:db
+  environment:
+   - RAILS_ENV=docker
