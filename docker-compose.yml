@@ -16,6 +16,6 @@ api:
   ports:
    - "3000:3000"
   links:
-   - pgdb:db
+   - db:db
   environment:
    - RAILS_ENV=docker
