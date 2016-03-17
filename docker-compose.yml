@@ -1,21 +1,24 @@
-frontend:
-  container_name: frontend
-  build: www
-  ports:
-   - "80:9000"
+version: '2'
+services:
+  frontend:
+    image: labelcraft_frontend
+    ports:
+     - "80:9000"
+  db:
+    image: labelcraft_db
+    ports:
+     - "5432:5432"
+  api:
+    image: labelcraft_api
+    depends_on:
+     - db
+    ports:
+     - "3000:3000"
+    environment:
+     - RAILS_ENV=docker
 
-db:
-  container_name: pgdb
-  build: api/database/postgres
-  ports:
-   - "5432:5432"
-
-api:
-  container_name: api
-  build: api
-  ports:
-   - "3000:3000"
-  links:
-   - db:db
-  environment:
-   - RAILS_ENV=docker
+networks:
+  default:
+    ipam:
+      config:
+       - subnet: 10.10.10.0/24
