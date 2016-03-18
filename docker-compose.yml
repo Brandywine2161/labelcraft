@@ -1,4 +1,5 @@
 version: '2'
+<<<<<<< HEAD
 
 services:
   db:
@@ -36,3 +37,28 @@ services:
 networks:
   labelcraft:
     driver: bridge
+=======
+services:
+  frontend:
+    image: labelcraft_frontend
+    ports:
+     - "80:9000"
+  db:
+    image: labelcraft_db
+    ports:
+     - "5432:5432"
+  api:
+    image: labelcraft_api
+    depends_on:
+     - db
+    ports:
+     - "3000:3000"
+    environment:
+     - RAILS_ENV=docker
+
+networks:
+  default:
+    ipam:
+      config:
+       - subnet: 10.10.10.0/24
+>>>>>>> a3cbeb1dfaffbb486b1d1831e49b4c3018906359
